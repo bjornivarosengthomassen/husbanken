@@ -298,10 +298,12 @@ a{text-decoration:none;}
   background:var(--bg-card-privat);border-radius:20px;
   padding:34px 40px;gap:25px;
   display:flex;flex-direction:column;cursor:pointer;
-  transition:box-shadow var(--tr),transform var(--tr);
+  transition:box-shadow var(--tr),transform var(--tr),border-color var(--tr);
   text-decoration:none;
+  border:1.5px solid transparent;
 }
-.ecard:hover{box-shadow:0 4px 28px rgba(0,0,0,0.1);transform:translateY(-2px);}
+.ecard:hover{box-shadow:0 4px 28px rgba(0,0,0,0.1);transform:translateY(-2px);border-color:#2a4019;}
+.ecard-virk:hover{border-color:#00408f;}
 [data-theme="dark"] .ecard{background:var(--c-green-800);}
 .ecard-virk{background:var(--bg-card-virk);}
 [data-theme="dark"] .ecard-virk{background:var(--c-blue-900);}
@@ -823,6 +825,12 @@ function updateNav() {
   const scrollY = window.scrollY;
   const heroBottom = document.querySelector('.hero')?.offsetHeight || 600;
 
+  // Always solid when menu is open
+  if (menuOpen) {
+    nav.classList.add('nav-solid');
+    return;
+  }
+
   // Solid background once past the hero
   if (scrollY > heroBottom - 83) {
     nav.classList.add('nav-solid');
@@ -864,6 +872,7 @@ function toggleMenu() {
   overlay.style.background = isVirk ? 'rgba(0,23,50,0.5)' : 'rgba(16,25,10,0.5)';
   if (menuOpen) {
     overlay.style.display = 'block';
+    nav.classList.add('nav-solid');
     if (page === 'privat') { mp.classList.add('open'); mv.classList.remove('open'); }
     else { mv.classList.add('open'); mp.classList.remove('open'); }
     lbl.textContent = 'Lukk';
@@ -872,6 +881,8 @@ function toggleMenu() {
     mp.classList.remove('open'); mv.classList.remove('open');
     overlay.style.display = 'none';
     lbl.textContent = 'Meny';
+    // Only remove nav-solid if scroll position doesn't require it
+    updateNav();
     icon.innerHTML = '<line x1="2" y1="5" x2="18" y2="5"/><line x1="2" y1="10" x2="18" y2="10"/><line x1="2" y1="15" x2="18" y2="15"/>';
   }
 }
