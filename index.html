@@ -72,11 +72,12 @@ a{text-decoration:none;}
 /* ===== NAV — height 83px from Figma ===== */
 .nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
-  background:transparent;
+  background:var(--bg-hero-privat);
   border-bottom:1px solid transparent;
   height:83px;
-  transition:background 0.3s ease, border-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+  transition:background 0.3s ease, border-color 0.3s ease, transform 0.25s ease, opacity 0.25s ease;
 }
+[data-page="virk"] .nav { background: var(--bg-hero-virk); }
 .nav.nav-solid{
   background:var(--bg-nav);
   border-bottom:1px solid var(--border);
@@ -84,10 +85,11 @@ a{text-decoration:none;}
 .nav.nav-hidden{
   transform:translateY(-100%);
   opacity:0;
+  transition:transform 0.25s ease, opacity 0.25s ease, background 0.3s ease, border-color 0.3s ease;
 }
 /* When nav is transparent, keep button pill backgrounds visible */
-.nav:not(.nav-solid) .nav-btn { background: rgba(247,251,244,0.65); backdrop-filter: blur(4px); }
-[data-page="virk"] .nav:not(.nav-solid) .nav-btn { background: rgba(244,249,255,0.65); }
+.nav:not(.nav-solid) .nav-btn { background: #f7fbf4; }
+[data-page="virk"] .nav:not(.nav-solid) .nav-btn { background: #f4f9ff; }
 [data-theme="dark"] .nav:not(.nav-solid) .nav-btn { background: rgba(35,53,20,0.5); }
 
 .nav-inner{
@@ -820,7 +822,6 @@ let menuOpen = false;
 // ── NAV SCROLL BEHAVIOUR ──
 const nav = document.querySelector('.nav');
 let lastScrollY = 0;
-let hideTimer = null;
 
 function updateNav() {
   const scrollY = window.scrollY;
@@ -832,10 +833,14 @@ function updateNav() {
 
 window.addEventListener('scroll', function() {
   const scrollY = window.scrollY;
-  if (scrollY > lastScrollY && scrollY > 200) {
-    if (!hideTimer) { hideTimer = setTimeout(() => { nav.classList.add('nav-hidden'); if (menuOpen) toggleMenu(); }, 4000); }
+  if (menuOpen) { lastScrollY = scrollY; return; }
+
+  if (scrollY > lastScrollY && scrollY > 80) {
+    // Scrolling down — hide immediately
+    nav.classList.add('nav-hidden');
   } else {
-    clearTimeout(hideTimer); hideTimer = null; nav.classList.remove('nav-hidden');
+    // Scrolling up — show immediately
+    nav.classList.remove('nav-hidden');
   }
   lastScrollY = scrollY;
   updateNav();
