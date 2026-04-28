@@ -74,7 +74,7 @@ a{text-decoration:none;}
   position:fixed;top:0;left:0;right:0;z-index:100;
   background:var(--bg-hero-privat);
   border-bottom:1px solid transparent;
-  height:83px;
+  height:80px;
   transition:background 0.3s ease, border-color 0.3s ease, transform 0.25s ease, opacity 0.25s ease;
 }
 [data-page="virk"] .nav { background: var(--bg-hero-virk); }
@@ -133,7 +133,7 @@ a{text-decoration:none;}
 .nav-btn {
   display: inline-flex; align-items: center; gap: 6px;
   height: 44px; padding: 8px 16px; border-radius: 20px; border: none; cursor: pointer;
-  font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 600; line-height: 24px;
+  font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 500; line-height: 24px;
   background: #f0f7ea; color: #101909;
   transition: background 0.2s ease; white-space: nowrap;
 }
@@ -170,7 +170,7 @@ a{text-decoration:none;}
 
 /* ===== MEGA MENU ===== */
 .mega-menu{
-  position:fixed;top:83px;left:0;right:0;
+  position:fixed;top:80px;left:0;right:0;
   background:var(--bg-nav);border-bottom:1px solid var(--border);
   box-shadow:0 8px 40px rgba(0,0,0,0.1);
   display:none;z-index:99;
@@ -451,7 +451,7 @@ footer{background:var(--bg-footer);padding:80px 0 48px;transition:background var
 </style>
 <body>
 
-<div id="menuOverlay" onclick="toggleMenu()" style="display:none;position:fixed;top:83px;left:0;right:0;bottom:0;z-index:98;background:rgba(16,25,10,0.5);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:opacity 0.2s ease;"></div>
+<div id="menuOverlay" onclick="toggleMenu()" style="display:none;position:fixed;top:80px;left:0;right:0;bottom:0;z-index:98;background:rgba(16,25,10,0.5);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:opacity 0.2s ease;"></div>
 
 <!-- SVG clip-path for hero image blob — eksakt path fra Figma node 13282:18617 -->
 <svg width="0" height="0" style="position:absolute;overflow:hidden">
@@ -587,7 +587,7 @@ footer{background:var(--bg-footer);padding:80px 0 48px;transition:background var
 <div class="page-privat">
 
   <div class="hero" style="flex-direction:column;align-items:stretch;justify-content:flex-start;">
-    <div style="display:flex;justify-content:flex-end;padding:0 48px 0;max-width:1268px;margin:-4px auto 0;width:100%;">
+    <div style="display:flex;justify-content:flex-end;padding:0 48px 0;max-width:1268px;margin:3px auto 0;width:100%;">
   <div id="langSelector" style="position:relative;">
     <button id="langBtn" onclick="toggleLang()" style="
       display:inline-flex;align-items:center;gap:8px;
@@ -742,7 +742,7 @@ footer{background:var(--bg-footer);padding:80px 0 48px;transition:background var
   <div class="hero hero-virk" style="flex-direction:column;align-items:stretch;justify-content:flex-start;">
 
     <!-- Language selector -->
-    <div style="display:flex;justify-content:flex-end;padding:0 48px 0;max-width:1268px;margin:-4px auto 0;width:100%;">
+    <div style="display:flex;justify-content:flex-end;padding:0 48px 0;max-width:1268px;margin:3px auto 0;width:100%;">
       <div id="langSelectorVirk" style="position:relative;">
         <button id="langBtnVirk" onclick="toggleLangVirk()" style="display:inline-flex;align-items:center;gap:8px;height:40px;padding:6px 16px;border-radius:20px;border:1.5px solid #a8c8f0;background:#f4f9ff;color:#101909;font-family:'Inter',sans-serif;font-size:16px;font-weight:500;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.06);transition:border-color 0.2s ease;white-space:nowrap;">
           <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="10" r="8"/><ellipse cx="10" cy="10" rx="4" ry="8"/><line x1="2" y1="10" x2="18" y2="10"/><line x1="3.5" y1="6" x2="16.5" y2="6"/><line x1="3.5" y1="14" x2="16.5" y2="14"/></svg>
